@@ -10,7 +10,6 @@ body{
 }
 
 .item{
-    background-color: pink;
     padding-right: 5px;
     margin-right: 5px;
 }
@@ -25,7 +24,7 @@ body{
     font-size: 200%;
     display: flex; 
     height: 300px; 
-    background-color: aquamarine;
+    background-color: rgb(221,238,249);
     align-items:center;
     justify-content:center;
 }
@@ -37,10 +36,10 @@ body{
 .promotionBlock{
     display:flex;
     /* width: 1200px; */
-}
+/3369400/133268513-5bfe2f93-4402-42c9-a403-81c9e86934b6.jpeg}
 .promotion{
     
-    background-color: blueviolet;
+    background-color: rgb(221,238,249);
     /* margin-right: 1%; */
     margin-bottom: 5px;
     margin-top: 5px;
@@ -54,27 +53,28 @@ body{
 .titles{
     display:flex;
     flex-wrap: wrap;
-    align-items:center;
-    justify-content:center;
+    /* align-items:center;
+    justify-content:center; */
 }
 
 .titleBlock{
+    background-color: rgb(221,238,249);
     width:290px;
     flex: none; 
     justify-content:center;
     align-items:center;
-    padding-right:5px ;
-    padding-left:5px ;
+    margin:5px
 }
 
 .titleImg{
     width: 290px;
+    display: block;
 }
 
 .title{
     display: flex; 
     justify-content:center;
-    align-items:center;
+    /* align-items:center; */
 }
 
 @media(max-width:1200px){
@@ -116,11 +116,13 @@ body{
     }
     .promotion{
         width: 100%;
-        margin-right: 0%;
+        margin-right: 0px;
+        margin-left: 0px;
     }
     .titleBlock{
         width: 100%;
         margin-right: 0px;
+        margin-left: 0px;
     }
     .titleImg{
         width: 100%;
