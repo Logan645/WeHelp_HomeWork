@@ -1,3 +1,4 @@
+// $(document).ready(function(){
 fetch("https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assignment.json")
 .then(response=>{
     return response.json();  //取得 JSON 再轉 JavaScript
@@ -14,33 +15,42 @@ fetch("https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assi
 
     function promotion(className,num){
         let img = document.createElement("img");
-        img.src=urlArr[num]
+        img.src=urlArr[num];
         img.style.height="50px";
-        document.getElementById(className).appendChild(img)
+        document.getElementById(className).appendChild(img);
         let span = document.createElement("span");
-        span.textContent=titleArr[num]
-        document.getElementById(className).appendChild(span)
+        span.textContent=titleArr[num];
+        document.getElementById(className).appendChild(span);
     }
 
     function titleBlock(idName,num){
-        let img=document.createElement('img')
+        const img=document.createElement('img');
         img.src=urlArr[num];
         img.setAttribute('class','titleImg');
-        document.getElementById(idName).appendChild(img);
+        document.getElementById(idName).appendChild(img); //Uncaught (in promise) TypeError: Cannot read properties of null (reading 'appendChild')
         let div=document.createElement('div');
         div.setAttribute('class','title');
-        div.textContent=titleArr[num]
-        document.getElementById(idName).appendChild(div)
+        div.textContent=titleArr[num];
+        document.getElementById(idName).appendChild(div);
     }
-    // console.log(titleArr);
-    // console.log(urlArr);
+
+    // for(let i=1;i<9;i++){
+    //     const idtest="'titleBlock"+i+"'";
+    //     console.log(typeof idtest);
+    //     console.log(typeof 'titleBlock1');
+        
+    //     if(idtest=='titleBlock1'){
+    //         console.log('一樣')}
+    //         else{
+    //             console.log('不同');
+    //             console.log(idtest);
+    //             console.log();
+    //         };
+    //     titleBlock(idtest,i+1)
+    // }
+
     promotion('promotion1',0)
     promotion('promotion2',1)
-
-    // for(let x=1;i<9;i++){
-    //     let idtest="'titleBlock"+x+"'"
-    //     titleBlock(idtest,x+1)
-    // }
 
     titleBlock('titleBlock1',2)
     titleBlock('titleBlock2',3)
