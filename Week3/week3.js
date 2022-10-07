@@ -34,30 +34,21 @@ fetch("https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assi
         document.getElementById(idName).appendChild(div);
     }
 
-    // for(let i=1;i<9;i++){
-    //     const idtest="'titleBlock"+i+"'";
-    //     console.log(typeof idtest);
-    //     console.log(typeof 'titleBlock1');
-        
-    //     if(idtest=='titleBlock1'){
-    //         console.log('一樣')}
-    //         else{
-    //             console.log('不同');
-    //             console.log(idtest);
-    //             console.log();
-    //         };
-    //     titleBlock(idtest,i+1)
-    // }
-
     promotion('promotion1',0)
     promotion('promotion2',1)
-
-    titleBlock('titleBlock1',2)
-    titleBlock('titleBlock2',3)
-    titleBlock('titleBlock3',4)
-    titleBlock('titleBlock4',5)
-    titleBlock('titleBlock5',6)
-    titleBlock('titleBlock6',7)
-    titleBlock('titleBlock7',8)
-    titleBlock('titleBlock8',9)
+    
+    for(let i=1;i<9;i++){
+        let idtest=`titleBlock${i}`; //在字串中帶入變數的標準寫法
+        console.log(idtest);
+        titleBlock(idtest,i+1)
+    }
+    
+//     titleBlock('titleBlock1',2)
+//     titleBlock('titleBlock2',3)
+//     titleBlock('titleBlock3',4)
+//     titleBlock('titleBlock4',5)
+//     titleBlock('titleBlock5',6)
+//     titleBlock('titleBlock6',7)
+//     titleBlock('titleBlock7',8)
+//     titleBlock('titleBlock8',9)
 })
