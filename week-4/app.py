@@ -54,14 +54,17 @@ def signin():
 def signout():
     del session['accountID']
     return redirect('/')
+
+@app.route('/calculate')
+def calculate():
+     number=request.values.get('number')
+     return redirect('/square/{}'.format(number))
  
-@app.route('/square')
-def square():
+@app.route('/square/<Number>')
+def square(Number):
     # number=request.args.get('number','')
-    number=request.form.get('number')
-    # print(number)
-    # print(type(number))
-    num=int(number) #一開始接收到的數字是字串
+    # number=request.values.get('number')
+    num=int(Number) #一開始接收到的數字是字串
     square_number=num*num
     # return square_number
     return render_template('square.html',number=square_number)
