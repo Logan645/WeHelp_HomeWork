@@ -5,7 +5,7 @@ import certifi
 
 app=Flask(__name__,static_folder='public',static_url_path='/')
 app.secret_key='12345678'
-client = pymongo.MongoClient("mongodb+srv://Logan:19941217@mycluster.g4ddrju.mongodb.net/?retryWrites=true&w=majority",
+client = pymongo.MongoClient("mongodb+srv://*****:********@mycluster.g4ddrju.mongodb.net/?retryWrites=true&w=majority",
 tlsCAFile=certifi.where())
 db = client.login_data #選擇要操作的database
 
