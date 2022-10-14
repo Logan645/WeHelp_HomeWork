@@ -1,14 +1,19 @@
-from crypt import methods
 from flask import Flask, render_template, request, session, redirect
 import pymongo
 import certifi
+import os
+from dotenv import load_dotenv
+load_dotenv()
+Account=os.getenv('Account')
+PASSWORDS=os.getenv('PASSWORDS')
 
 app=Flask(__name__,static_folder='public',static_url_path='/')
 app.secret_key='12345678'
-client = pymongo.MongoClient("mongodb+srv://*****:********@mycluster.g4ddrju.mongodb.net/?retryWrites=true&w=majority",
-tlsCAFile=certifi.where())
+client = pymongo.MongoClient(
+    f"mongodb+srv://{Account}:{PASSWORDS}@mycluster.g4ddrju.mongodb.net/?retryWrites=true&w=majority",
+tlsCAFile=certifi.where()
+)
 db = client.login_data #選擇要操作的database
-
 
 @app.route('/')
 def index():
@@ -55,10 +60,10 @@ def signout():
     del session['accountID']
     return redirect('/')
 
-@app.route('/calculate')
-def calculate():
-     number=request.values.get('number')
-     return redirect('/square/{}'.format(number))
+# @app.route('/calculate')
+# def calculate():
+#      number=request.values.get('number')
+#      return redirect('/square/{}'.format(number))
  
 @app.route('/square/<Number>')
 def square(Number):
