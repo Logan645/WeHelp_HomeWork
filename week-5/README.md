@@ -33,7 +33,7 @@ insert into member (name, username, password) values ('Nick', 'Nickaccount', 'ni
 insert into member (name, username, password) values ('angel', 'angelaccount', 'angel1115');
 insert into member (name, username, password) values ('randy', 'randyaccount', 'randy1030');
 ```
-* 使⽤ SELECT 指令取得所有在 member 資料表中的會員資料。
+* 使⽤ SELECT 指令取得所有在 member 資料表中的會員資料。  
 `select * from member`
 ![](https://i.imgur.com/1g7DWTz.png)
 
