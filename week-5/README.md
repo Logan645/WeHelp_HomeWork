@@ -1,2 +1,2 @@
-CREATE DATABASE website;
-show databases;
+CREATE DATABASE website;  
+show databases;  
