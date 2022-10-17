@@ -38,36 +38,36 @@ insert into member (name, username, password) values ('randy', 'randyaccount', '
 ![](https://i.imgur.com/1g7DWTz.png)
 
 
-* 使⽤ SELECT 指令取得所有在 member 資料表中的會員資料，並按照 time 欄位，由近到遠排序。
-`select * from member order by time desc;`
+* 使⽤ SELECT 指令取得所有在 member 資料表中的會員資料，並按照 time 欄位，由近到遠排序。  
+`select * from member order by time desc;`  
 ![](https://i.imgur.com/jIuTcsk.png)
 
 
-* 使⽤ SELECT 指令取得 member 資料表中第 2 ~ 4 共三筆資料，並按照 time 欄位，由近到遠排序。 ( 並非編號 2、3、4 的資料，⽽是排序後的第 2 ~ 4 筆資料 )
-`select * from member order by time desc limit 1,3;`
+* 使⽤ SELECT 指令取得 member 資料表中第 2 ~ 4 共三筆資料，並按照 time 欄位，由近到遠排序。 ( 並非編號 2、3、4 的資料，⽽是排序後的第 2 ~ 4 筆資料 )  
+`select * from member order by time desc limit 1,3;`  
 ![](https://i.imgur.com/WNAoBis.png)
 
 
-* 使⽤ SELECT 指令取得欄位 username 是 test 的會員資料。
+* 使⽤ SELECT 指令取得欄位 username 是 test 的會員資料。  
 `select * from member where username='test';`
 ![](https://i.imgur.com/Ktoqda1.png)
 
-* 使⽤ SELECT 指令取得欄位 username 是 test、且欄位 password 也是 test 的資料。
+* 使⽤ SELECT 指令取得欄位 username 是 test、且欄位 password 也是 test 的資料。  
 `select * from member where username='test'and password='test';`
 ![](https://i.imgur.com/aRaWMNk.png)
 
-* 使⽤ UPDATE 指令更新欄位 username 是 test 的會員資料，將資料中的 name 欄位改成 test2。
+* 使⽤ UPDATE 指令更新欄位 username 是 test 的會員資料，將資料中的 name 欄位改成 test2。  
 `update member set name='test2' where username='test';`
 ![](https://i.imgur.com/QK5qTYR.png)
 
-* 取得 member 資料表中，總共有幾筆資料 ( 幾位會員 )。
+* 取得 member 資料表中，總共有幾筆資料 ( 幾位會員 )。  
 `select count(id) from member;`
 ![](https://i.imgur.com/Km5byrr.png)
 
-* 取得 member 資料表中，所有會員 follower_count 欄位的總和。
+* 取得 member 資料表中，所有會員 follower_count 欄位的總和。  
 `select sum(follower_count) from member;`
 ![](https://i.imgur.com/T3c7Tfv.png)
 
-* 取得 member 資料表中，所有會員 follower_count 欄位的平均數。
+* 取得 member 資料表中，所有會員 follower_count 欄位的平均數。  
 `select avg(follower_count) from member;`
 ![](https://i.imgur.com/nYKnktv.png)
