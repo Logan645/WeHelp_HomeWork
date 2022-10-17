@@ -61,7 +61,7 @@ insert into member (name, username, password) values ('randy', 'randyaccount', '
 ![](https://i.imgur.com/QK5qTYR.png)
 
 * 取得 member 資料表中，總共有幾筆資料 ( 幾位會員 )。  
-`select count(id) from member;` 
+`select count(id) from member;`  
 ![](https://i.imgur.com/Km5byrr.png)
 
 * 取得 member 資料表中，所有會員 follower_count 欄位的總和。  
