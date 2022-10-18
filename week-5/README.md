@@ -71,3 +71,42 @@ insert into member (name, username, password) values ('randy', 'randyaccount', '
 * 取得 member 資料表中，所有會員 follower_count 欄位的平均數。  
 `select avg(follower_count) from member;`
 ![](https://i.imgur.com/nYKnktv.png)
+
+* 在資料庫中，建立新資料表紀錄留⾔資訊，取名字為 message 。資料表中必須包含以下欄位設定：
+
+|  欄位名稱 | 資料型態 | 額外設定 | ⽤途說明|
+| -------- | -------- | -------- | -------- |
+| id | bigint | 主鍵、⾃動遞增 | 獨立編號 |
+| member_id | bigint | 不可為空值外鍵對應 member 資料表中的 id | 留⾔者會員編號 |
+| content| varchar(255)     | 不可為空值     | 留言內容    |
+| like_count| varchar(255)     | 不可為空值，預設為0    | 按讚的數量    |
+| content| varchar(255)     | 不可為空值     | 留言內容    |
+| time     | datetime     | 不可為空值，預設為當前時間     | 留言時間    |
+```
+create table message(
+id bigint primary key auto_increment,
+member_id bigint not null,
+content varchar(255) not null,
+like_count int unsigned not null default 0,
+time datetime not null default now(),
+foreign key (member_id) references member(id));
+
+insert into message(member_id,content,like_count) values(1,'一直下雨好煩呀',7);
+insert into message(member_id,content,like_count) values(1,'希望趕快放晴',11);
+insert into message(member_id,content,like_count) values(1,'99好像去散步',4);
+insert into message(member_id,content,like_count) values(4,'檸檬塔好吃',12);
+insert into message(member_id,content,like_count) values(2,'我是rick',1);
+insert into message(member_id,content,like_count) values(3,'你好嗎',77);
+insert into message(member_id,content,like_count) values(5,'好想騎車喔',45);
+```
+* 使⽤ SELECT 搭配 JOIN 語法，取得所有留⾔，結果須包含留⾔者會員的姓名。
+`select * from member inner join message on member.id=message.member_id;`  
+![](https://i.imgur.com/c7Y07Tl.png)
+
+* 使⽤ SELECT 搭配 JOIN 語法，取得 member 資料表中欄位 username 是 test 的所有留⾔，資料中須包含留⾔者會員的姓名。
+`select * from member inner join message on member.id=message.member_id where member.username='test';`  
+![](https://i.imgur.com/wLMe2U9.png)
+
+* 使⽤ SELECT、SQL Aggregate Functions 搭配 JOIN 語法，取得 member 資料表中欄位 username 是 test 的所有留⾔平均按讚數。
+`select avg(like_count) from member inner join message on member.id=message.member_id where member.username='test';`  
+![](https://i.imgur.com/HQKl2PU.png)
