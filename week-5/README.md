@@ -80,7 +80,6 @@ insert into member (name, username, password) values ('randy', 'randyaccount', '
 | member_id | bigint | 不可為空值外鍵對應 member 資料表中的 id | 留⾔者會員編號 |
 | content| varchar(255)     | 不可為空值     | 留言內容    |
 | like_count| varchar(255)     | 不可為空值，預設為0    | 按讚的數量    |
-| content| varchar(255)     | 不可為空值     | 留言內容    |
 | time     | datetime     | 不可為空值，預設為當前時間     | 留言時間    |
 ```
 create table message(
