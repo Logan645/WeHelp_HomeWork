@@ -109,3 +109,17 @@ insert into message(member_id,content,like_count) values(5,'好想騎車喔',45)
 * 使⽤ SELECT、SQL Aggregate Functions 搭配 JOIN 語法，取得 member 資料表中欄位 username 是 test 的所有留⾔平均按讚數。
 `select avg(like_count) from member inner join message on member.id=message.member_id where member.username='test';`  
 ![](https://i.imgur.com/HQKl2PU.png)
+
+* 我們不只要記錄留言按讚的數量，還要紀錄每一個留言的按讚會員是誰，支援以下使用場合：
+    - 可以根據留言編號取得該留言有哪些會員按讚。
+    - 會員若是嘗試對留言按讚：要能先檢查是否曾經按過讚，然後才將按讚的數量 +1 並且記錄按讚的會員是誰。
+
+sol:
+產生名為like_chart的table
+| 欄位名稱   | 資料型態 | 額外設定 | 用途說明|
+| -------- | -------- | -------- |-------- |
+| id     | bigint     | 主鍵、⾃動遞增 | 獨立編號|
+| message_id | bigint | 不可為空值，外鍵對應 message 資料表中的 id | 被點讚的留言編號|
+| member_id | bigint | 不可為空值外鍵對應 member 資料表中的 id | 點讚者會員編號 |
+
+message中的like_count與此表like_chart產生關聯，message.like_count=count(message_id) from like_chart
