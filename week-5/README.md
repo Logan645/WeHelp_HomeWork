@@ -122,4 +122,14 @@ sol:
 | message_id | bigint | 不可為空值，外鍵對應 message 資料表中的 id | 被點讚的留言編號|
 | member_id | bigint | 不可為空值外鍵對應 member 資料表中的 id | 點讚者會員編號 |
 
+```
+create table like_chart(
+    id bigint primary key auto_increment,
+    message_id bigint not null,
+    member_id bigint not null,
+    foreign key (member_id) references member(id),
+    foreign key (message_id) references message(id),
+    CONSTRAINT UC_like UNIQUE (message_id,member_id));
+```
+
 message中的like_count與此表like_chart產生關聯，message.like_count=count(message_id) from like_chart
