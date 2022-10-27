@@ -28,11 +28,13 @@ def signup():
     name=request.form['name']
     account=request.form['account']
     password=request.form['password']
-    print(name, account,password)
+    # print(name, account,password)
     if name=="" or account=="" or password=="":
         return redirect('/error?message=任一欄位不可有空值')
     else:
-        mycursor.execute("select account from member where account='{}'".format(account))
+        sql='select account from member where account=%s'
+        val=(account,) #這寫法比較特別要注意
+        mycursor.execute(sql,val)
         result = mycursor.fetchall()
     if result!=[]:
         return redirect('/error?message=帳號已有人註冊')
@@ -55,7 +57,10 @@ def signup():
 def signin():
     account=request.form['account']
     password=request.form['password']
-    mycursor.execute("select * from member where account='{}' and password='{}'".format(account,password))
+    sql="select * from member where account=(%s) and password=(%s)"
+    val=(account,password)
+    mycursor.execute(sql,val)
+    # mycursor.execute("select * from member where account='{}' and password='{}'".format(account,password))
     result = mycursor.fetchone()
     if result!=None:
         session['name']=result[0]
@@ -79,6 +84,5 @@ def member():
 def error():
     message=request.args.get('message',"發生錯誤")
     return render_template('error.html',msg=message)
-
 
 app.run(port=3000)
